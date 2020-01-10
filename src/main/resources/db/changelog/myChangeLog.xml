@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <include file="/db/changelog/changes/create-table.xml"/>
+
+    <!--так как база данных in-memory данные при каждом запуске будут заносится в базу данных для возможности тестирования приложения-->
+    <changeSet id="4" author="Jack Sparrow" runAlways="true" dbms="H2">
+    <sql>
+        INSERT INTO `suppliers`
+        VALUES
+        (1,'www.china-qiyuan.com','Daniel','sales3@china-qiyuan.com','Ningxia Qiyuan Pharmaceutical Co., Ltd','ascorbic acid'),
+        (2,'www.chnattwr.cn','Lily','sales6@chinattwr.com','SHANDONG TONGTAI WEIRUN CHEMICAL CO.,LTD','Sodium Benzoate'),
+        (3,'www.chinafooding.com','Lily','sales60@chinafooding.com','Fooding Group Limited','Creatine Monogydrate');
+    </sql>
+    </changeSet>
+
+</databaseChangeLog>
